@@ -27,6 +27,8 @@ public class HomeActivity extends Activity {
     String Search_str=null;
     Button btn;
     ImageView imgbtn_attend;
+    ImageView imgbtn_setting;
+
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         //btn = (Button)findViewById(R.id.button2);
         imgbtn_attend = (ImageView)findViewById(R.id.img_attend);
+        imgbtn_setting = (ImageView)findViewById(R.id.img_setting);
         intent = new Intent(this, LocalService.class);
         bindService(intent,mConnection, Context.BIND_AUTO_CREATE);
 
@@ -80,7 +83,7 @@ public class HomeActivity extends Activity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.img_attend:
+            case R.id.img_attend:                   //출석버튼 누를때
                 if (mBound) {
                     String Str_search = "{\"SEARCH\":["
                             + "]}";
@@ -90,6 +93,13 @@ public class HomeActivity extends Activity {
                     mService.sendMsg(Str_search);
                     break;
                 }
+            case R.id.img_setting:                  //설정버튼 누를때
+                Intent settingintent = new Intent(getApplicationContext(), SettingActivity.class);
+                startActivityForResult(settingintent,1003);
+                break;
+
+
+
         }
     }
     public void logout(View v){

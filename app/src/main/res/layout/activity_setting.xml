@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:text="Setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="20sp" />
+
+    <Switch
+        android:text="아이디 저장"
+        android:layout_width="match_parent"
+        android:id="@+id/switch_id"
+        android:layout_height="80dp" />
+
+    <Switch
+        android:text="비밀번호 저장"
+        android:layout_width="match_parent"
+        android:id="@+id/switch_pw"
+        android:layout_height="80dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right">
+
+        <Button
+            android:text="로그 아웃"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_logout"
+            android:onClick="onClick" />
+    </LinearLayout>
+
+</LinearLayout>

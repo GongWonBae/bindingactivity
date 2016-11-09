@@ -71,11 +71,12 @@
             android:layout_height="10dp"
             android:src="@drawable/setting"
 
-            android:id="@+id/imageView6"
+            android:id="@+id/img_setting"
             android:layout_weight="0.15"
             android:background="#26409a"
             android:scaleType="fitStart"
-            android:layout_marginTop="30px"/>
+            android:layout_marginTop="30px"
+            android:onClick="onClick" />
 
         <ImageView
             android:layout_width="match_parent"
