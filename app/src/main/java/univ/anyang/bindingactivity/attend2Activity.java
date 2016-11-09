@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import static univ.anyang.bindingactivity.LoginActivity.msghandler;
 
-
+////////////나랏말싸미 듕귁에 달아//////////////
 public class attend2Activity extends Activity {
 
     LocalService mService;
