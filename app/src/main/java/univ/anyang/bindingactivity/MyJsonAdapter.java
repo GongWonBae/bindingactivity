@@ -1,6 +1,7 @@
 package univ.anyang.bindingactivity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,10 +60,13 @@ import java.util.ArrayList;
             convertView = inflater.inflate(layout,parent,false);
         }
         TextView txt = (TextView)convertView.findViewById(R.id.txt);
-        txt.setText(arJ.get(position).ClassCode+" "+arJ.get(position).Name + "  분반 : "+arJ.get(position).Num +"  강의실 : "+ arJ.get(position).ClassRoom );
+        TextView txt2 = (TextView)convertView.findViewById(R.id.txt2);
+        txt.setText(arJ.get(position).Name);
+        txt2.setText(arJ.get(position).ClassRoom+"\n"+arJ.get(position).week+"\n"+arJ.get(position).ctime);
         final SearchObject searchobj=new SearchObject(arJ.get(position).ClassCode, arJ.get(position).Num,arJ.get(position).ClassRoom,arJ.get(position).week,arJ.get(position).ctime);
         Button btn = (Button)convertView.findViewById(R.id.btn);
-        btn.setText("출석");
+       // btn.setText("출석");
+       // btn.setBackgroundColor(Color.rgb(38,64,154));
         btn.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 //String str = arJ.get(position).ClassCode;
