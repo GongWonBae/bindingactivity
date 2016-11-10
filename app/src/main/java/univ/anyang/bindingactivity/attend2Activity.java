@@ -1,6 +1,7 @@
 package univ.anyang.bindingactivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static univ.anyang.bindingactivity.LoginActivity.msghandler;
 
@@ -62,11 +66,12 @@ public class attend2Activity extends Activity {
                         Toast.makeText(getApplicationContext(),"BF: "+aJp.BeaconFlag, Toast.LENGTH_LONG).show(); //파싱 되는거 확인
                         Toast.makeText(getApplicationContext(),"AF: "+aJp.AttendFlag, Toast.LENGTH_LONG).show(); //파싱 되는거 확인
 
-                        if(aJp.BeaconFlag.equals("1"))  // 비콘센서안에있을때
+                        if(aJp.BeaconFlag.equals("0"))  // 비콘센서안에있을때
                         {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
+
                             if(aJp.AttendFlag.equals("00"))
                             {   // 출석처리됨
                                 txtview_attend.setText("출석이 확인되었습니다.");
@@ -84,19 +89,19 @@ public class attend2Activity extends Activity {
 
                             }
                         }
-                        else if(aJp.BeaconFlag.equals("2"))     // 거리밖에 비콘 감지
+                        else if(aJp.BeaconFlag.equals("1"))     // 거리밖에 비콘 감지
                         {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
-                            txtview_attend.setText("Beacon Flag : 2");
+                            txtview_attend.setText("강의실과 너무 멀리 있습니다.");
                         }
-                        else if(aJp.BeaconFlag.equals("3"))     // 비콘을 찾을 수 없음
+                        else if(aJp.BeaconFlag.equals("2"))     // 비콘을 찾을 수 없음
                         {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
-                            txtview_attend.setText("Beacon Flag : 3");
+                            txtview_attend.setText("위치를 확인할 수 없습니다.");
                         }
                         break;
                 }
@@ -123,7 +128,9 @@ public class attend2Activity extends Activity {
                     // occur in a separate thread to avoid slowing down the activity performance.
                     mService.sendMsg(B_Json);
                 }
-                progressBar.setVisibility(v.VISIBLE);                        //확인버튼 누를때 프로그레스바Visible을 true로
+                //progressBar.setVisibility(v.VISIBLE);                        //확인버튼 누를때 프로그레스바Visible을 true로
+                startLoading(this);
+                endLoading();
                 break;
             case R.id.btn_cancel:                                           //취소버튼을 눌렀을때
                 finish();
@@ -134,6 +141,29 @@ public class attend2Activity extends Activity {
         }
     }
 
+    public ProgressDialog loadingDialog;
+
+    public void startLoading(Context ctx) {
+        if(loadingDialog == null) {
+            loadingDialog = ProgressDialog.show(ctx,"Loading...","Please wait",false,true);
+        }
+    }
+
+    public void endLoading() {
+        endLoader endLoader = new endLoader();
+        Timer timer = new Timer(false);
+        timer.schedule(endLoader,5000);
+    }
+
+    class endLoader extends TimerTask {
+        endLoader() {       }
+        public void run() {
+            if (loadingDialog != null) {
+                loadingDialog.dismiss();
+                loadingDialog = null;
+            }
+        }
+    }
 
     public void sendMsg(String msg) {
         if(mBound)

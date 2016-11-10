@@ -1,7 +1,10 @@
 package univ.anyang.bindingactivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,14 +25,23 @@ public class SettingActivity extends AppCompatActivity {
         switch_id = (Switch)findViewById(R.id.switch_id);
         switch_pw = (Switch)findViewById(R.id.switch_pw);
 
+        setChecked();
+
         switch_id.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton cb, boolean isChecking) {
                 if(isChecking)  //true일 때
                 {
-
+                    SharedPreferences pref = getSharedPreferences("Information", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("idchecked",true);
+                    editor.commit();
                 } else          //false일 때
                 {
-
+                    SharedPreferences pref = getSharedPreferences("Information", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    //editor.remove("id");
+                    editor.putBoolean("idchecked",false);
+                    editor.commit();
                 }
             }
         });
@@ -45,16 +57,38 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
+    private void setChecked() {
+        SharedPreferences pref = getSharedPreferences("Information", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        boolean bool_id = pref.getBoolean("idchecked",false);
+        boolean bool_pw = pref.getBoolean("pwchecked",false);
+        if(bool_id) {
+            switch_id = (Switch)findViewById(R.id.switch_id);
+            switch_id.setChecked(true);
+        }
+        if(bool_pw) {
+            switch_pw = (Switch)findViewById(R.id.switch_pw);
+            switch_pw.setChecked(true);
+        }
+    }
+
 
     public void logout(View v){
-        Intent logoutIntent = new Intent(this,LoginActivity.class);
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD_MR1) {
-            newintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        else {
-            newintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }
-        stopService(newintent);
-        startActivity(logoutIntent);
+        new AlertDialog.Builder(this)
+                .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
+                .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        newintent = new Intent(SettingActivity.this , LoginActivity.class);
+                        newintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(newintent);
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
     }
 }

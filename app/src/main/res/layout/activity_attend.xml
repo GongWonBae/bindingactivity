@@ -11,17 +11,22 @@
     tools:context="univ.anyang.bindingactivity.attend2Activity">
 
     <TextView
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Textview" />
+        android:text="출석 가능한 강의가 없습니다."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Textview_none"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <Button
         android:text="출석목록 다시 받아오기(새로고침like that)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:onClick="onButtonClicked"
+        android:id="@+id/button_refresh"
+        android:onClick="onClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp" />

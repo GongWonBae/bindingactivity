@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,8 +39,9 @@ public class attendActivity extends Activity implements BeaconConsumer{
     boolean mBound = false;
     Intent intent;
     Intent SearchIntent;
-    Button btn;
-    TextView textView;
+    TextView textView_none;
+    ListView list;
+    Button btn_refresh;
     String Search_str=null;
     SearchJson_Parser sJson;
 
@@ -56,7 +58,9 @@ public class attendActivity extends Activity implements BeaconConsumer{
         intent = new Intent(this, LocalService.class);
         SearchIntent =getIntent();
         Search_str=SearchIntent.getExtras().getString("Search_str");
-        textView = (TextView)findViewById(R.id.Textview);
+        textView_none = (TextView)findViewById(R.id.Textview_none);
+        list = (ListView)findViewById(R.id.list);
+        btn_refresh = (Button)findViewById(R.id.button_refresh);
         bindService(intent,mConnection, Context.BIND_AUTO_CREATE);
         Toast.makeText(getApplicationContext(),"받아온 intent : "+Search_str, Toast.LENGTH_LONG).show();
 
@@ -69,12 +73,22 @@ public class attendActivity extends Activity implements BeaconConsumer{
         beaconManager.bind(this);
 
         sJson=new SearchJson_Parser(Search_str);
+        Toast.makeText(getApplicationContext(),sJson.num,Toast.LENGTH_SHORT).show();
+        if(sJson.num.equals("0"))               // Subject_num의 갯수가 0일때
+        {                                       // 강의없다는 TextView 출력
+            textView_none.setVisibility(View.VISIBLE);
+            list.setVisibility(View.INVISIBLE);
+            btn_refresh.setVisibility(View.INVISIBLE);
+        }
+        else {
+            MyJsonAdapter adapter = new MyJsonAdapter(getApplicationContext(), R.layout.item,sJson.list);
 
-        MyJsonAdapter adapter = new MyJsonAdapter(getApplicationContext(), R.layout.item,sJson.list);
+            ListView list;
+            list = (ListView)findViewById(R.id.list);
+            list.setAdapter(adapter);
+        }
 
-        ListView list;
-        list = (ListView)findViewById(R.id.list);
-        list.setAdapter(adapter);
+
 
         atthandler = new Handler() {
             @Override
@@ -97,6 +111,16 @@ public class attendActivity extends Activity implements BeaconConsumer{
                 }
             }
         };
+    }
+
+    public void onClick(View v)
+    {
+        switch (v.getId()) {
+            case R.id.button_refresh:
+                recreate();
+                break;
+        }
+
     }
 
     @Override
