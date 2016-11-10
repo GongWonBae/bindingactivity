@@ -62,7 +62,7 @@ public class attend2Activity extends Activity {
                         Toast.makeText(getApplicationContext(),"BF: "+aJp.BeaconFlag, Toast.LENGTH_LONG).show(); //파싱 되는거 확인
                         Toast.makeText(getApplicationContext(),"AF: "+aJp.AttendFlag, Toast.LENGTH_LONG).show(); //파싱 되는거 확인
 
-                        if(aJp.BeaconFlag.equals("1"))  // 비콘센서안에있을때
+                        if(aJp.BeaconFlag.equals("0"))  // 비콘센서안에있을때
                         {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
@@ -83,16 +83,22 @@ public class attend2Activity extends Activity {
                             {   // 결석처리됨
 
                             }
+                            else if(aJp.AttendFlag.equals(null))
+                            {   // 아직 출석처리 되지 않았습니다 다시 시도하세요.
+
+                            }
                         }
-                        else if(aJp.BeaconFlag.equals("2"))     // 거리밖에 비콘 감지
+                        else if(aJp.BeaconFlag.equals("1"))     // 거리밖에 비콘 감지
                         {
+                            // 강의실(비콘)이 너무 멀리 있습니다 다시 시도하세요
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
                             txtview_attend.setText("Beacon Flag : 2");
                         }
-                        else if(aJp.BeaconFlag.equals("3"))     // 비콘을 찾을 수 없음
+                        else if(aJp.BeaconFlag.equals("2"))     // 비콘을 찾을 수 없음
                         {
+                            // 강의실(비콘)을 찾을 수 없습니다 다시 시도하세요.
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
