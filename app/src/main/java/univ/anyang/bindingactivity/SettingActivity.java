@@ -29,7 +29,7 @@ public class SettingActivity extends AppCompatActivity {
 
                 } else          //false일 때
                 {
-                    
+
                 }
             }
         });
