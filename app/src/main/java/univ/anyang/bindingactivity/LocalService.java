@@ -31,7 +31,9 @@ public class LocalService extends Service {
     // 서비스 생성시 딱 1번만 실행되는 onCreate 문
     public void onCreate() {
         super.onCreate();
-        client = new SocketClient("192.168.0.7","8888");
+       // client = new SocketClient("192.168.0.7","8888");  //현직
+       // client = new SocketClient("220.66.60.204","8888"); // 태옥
+        client = new SocketClient("14.36.245.201","8888"); //원배
         client.start();
         Toast.makeText(getBaseContext(),"서비스(onCreate)시작", Toast.LENGTH_SHORT).show();
 
