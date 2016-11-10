@@ -33,6 +33,7 @@ public class LoginActivity extends Activity {
     EditText editText_pw;
     CheckBox cheBox_id;
     CheckBox cheBox_pw;
+    static String SID;
 
 
 
@@ -64,9 +65,6 @@ public class LoginActivity extends Activity {
                 }
             }
         });
-
-
-
 
         msghandler = new Handler() {
             @Override
@@ -130,8 +128,7 @@ public class LoginActivity extends Activity {
                     // occur in a separate thread to avoid slowing down the activity performance.
                     mService.sendMsg(Str_LoginJson);
                 }
-
-
+                SID=editText_id.getText().toString();
             }
         });
     }
