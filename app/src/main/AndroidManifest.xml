@@ -11,33 +11,26 @@
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".IntroActivity">
+        <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LoginActivity">
-        </activity>
-        <activity
-            android:name=".HomeActivity" />
-        <activity
-            android:name=".attendActivity" />
-
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".attendActivity" />
         <activity
             android:name=".attend2Activity"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
+            android:theme="@android:style/Theme.Dialog"></activity>
 
         <service
             android:name=".LocalService"
             android:enabled="true"
             android:exported="true" />
 
-
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>
