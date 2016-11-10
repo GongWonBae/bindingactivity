@@ -97,9 +97,11 @@ public class HomeActivity extends Activity {
                 Intent settingintent = new Intent(getApplicationContext(), SettingActivity.class);
                 startActivityForResult(settingintent,1003);
                 break;
+            case R.id.img_timetable:
 
-
-
+                Intent timetableintent = new Intent(getApplicationContext(), TimetableActivity.class);
+                startActivityForResult(timetableintent, 1004);
+                break;
         }
     }
     public void logout(View v){

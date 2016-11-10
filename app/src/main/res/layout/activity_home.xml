@@ -65,7 +65,8 @@
             android:layout_weight="0.15"
             android:background="#26409a"
             android:scaleType="fitStart"
-            android:layout_marginTop="30px"/>
+            android:layout_marginTop="30px"
+            android:onClick="onClick"/>
 
         <ImageView
             android:layout_width="match_parent"
