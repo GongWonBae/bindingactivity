@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -17,13 +18,13 @@
         android:text="아이디 저장"
         android:layout_width="match_parent"
         android:id="@+id/switch_id"
-        android:layout_height="80dp" />
+        android:layout_height="60dp" />
 
     <Switch
         android:text="비밀번호 저장"
         android:layout_width="match_parent"
         android:id="@+id/switch_pw"
-        android:layout_height="80dp" />
+        android:layout_height="60dp" />
 
     <LinearLayout
         android:orientation="vertical"
