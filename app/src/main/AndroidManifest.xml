@@ -31,7 +31,12 @@
             android:exported="true" />
 
         <activity android:name=".SettingActivity"></activity>
-        <activity android:name=".TimetableActivity"></activity>
+        <activity
+            android:name=".TimetableActivity"
+            >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".HomeActivity" />
+        </activity>
     </application>
-
 </manifest>
