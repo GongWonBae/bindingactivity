@@ -8,6 +8,7 @@
     tools:context="univ.anyang.bindingactivity.LoginActivity"
     android:orientation="vertical"
     android:weightSum="1"
+
     android:background="#ffffff">
 
     <LinearLayout
@@ -30,7 +31,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="10dp">
 
 
         <ImageView

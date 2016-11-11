@@ -1,6 +1,7 @@
 package univ.anyang.bindingactivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +17,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static univ.anyang.bindingactivity.LoginActivity.msghandler;
 
-////////////나랏말싸미 듕귁에 달아달아//////////////
+
 public class attend2Activity extends Activity {
 
     LocalService mService;
@@ -49,7 +53,7 @@ public class attend2Activity extends Activity {
         setLayout();        // layout으로부터 정보 받아옴.(getfindViewbyid)
 
         txtview_attend.setText("강의명 : "+ MyJsonAdapter.class_name+"\n"+          // 강의명과 강의실을 레이아웃에 띄움
-        "강의실 : "+ MyJsonAdapter.class_room);
+                "강의실 : "+ MyJsonAdapter.class_room);
 
         msghandler = new Handler() {
             @Override
@@ -124,13 +128,15 @@ public class attend2Activity extends Activity {
         switch(v.getId()) {
             case R.id.btn_ok:                                               //확인버튼을 눌렀을 때
                 if (mBound) {                                               //B_Json을 서버로 전송함
-                                                                            //56line에서 핸들러로 데이터를 받음
+                    //56line에서 핸들러로 데이터를 받음
                     // Call a method from the LocalService.
                     // However, if this call were something that might hang, then this request should
                     // occur in a separate thread to avoid slowing down the activity performance.
                     mService.sendMsg(B_Json);
                 }
-                progressBar.setVisibility(v.VISIBLE);                        //확인버튼 누를때 프로그레스바Visible을 true로
+                //progressBar.setVisibility(v.VISIBLE);                        //확인버튼 누를때 프로그레스바Visible을 true로
+                startLoading(this);
+                endLoading();
                 break;
             case R.id.btn_cancel:                                           //취소버튼을 눌렀을때
                 finish();
@@ -141,6 +147,29 @@ public class attend2Activity extends Activity {
         }
     }
 
+    public ProgressDialog loadingDialog;
+
+    public void startLoading(Context ctx) {
+        if(loadingDialog == null) {
+            loadingDialog = ProgressDialog.show(ctx,"Loading...","Please wait",false,true);
+        }
+    }
+
+    public void endLoading() {
+        endLoader endLoader = new endLoader();
+        Timer timer = new Timer(false);
+        timer.schedule(endLoader,5000);
+    }
+
+    class endLoader extends TimerTask {
+        endLoader() {       }
+        public void run() {
+            if (loadingDialog != null) {
+                loadingDialog.dismiss();
+                loadingDialog = null;
+            }
+        }
+    }
 
     public void sendMsg(String msg) {
         if(mBound)
