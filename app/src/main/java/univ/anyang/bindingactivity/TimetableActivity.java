@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 public class TimetableActivity extends AppCompatActivity {
     LoginActivity lA = new LoginActivity();
-    String id=lA.SID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

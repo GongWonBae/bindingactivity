@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -47,8 +48,7 @@ public class attendActivity extends Activity implements BeaconConsumer{
 
     static Handler atthandler;
     static String Message;
-
-
+    SwipeRefreshLayout layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +60,12 @@ public class attendActivity extends Activity implements BeaconConsumer{
         Search_str=SearchIntent.getExtras().getString("Search_str");
         textView_none = (TextView)findViewById(R.id.Textview_none);
         list = (ListView)findViewById(R.id.list);
-        btn_refresh = (Button)findViewById(R.id.button_refresh);
+       // btn_refresh = (Button)findViewById(R.id.button_refresh);
         bindService(intent,mConnection, Context.BIND_AUTO_CREATE);
         Toast.makeText(getApplicationContext(),"받아온 intent : "+Search_str, Toast.LENGTH_LONG).show();
+        layout = (SwipeRefreshLayout) findViewById(R.id.layout);
+
+
 
         // 실제로 비콘을 탐지하기 위한 비콘매니저 객체를 초기화
         beaconManager = BeaconManager.getInstanceForApplication(this);
@@ -111,16 +114,16 @@ public class attendActivity extends Activity implements BeaconConsumer{
                 }
             }
         };
-    }
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                    recreate();
+                //새로고침 작업 실행...
 
-    public void onClick(View v)
-    {
-        switch (v.getId()) {
-            case R.id.button_refresh:
-                recreate();
-                break;
-        }
+                layout.setRefreshing(false);
 
+            }
+        });
     }
 
     @Override
