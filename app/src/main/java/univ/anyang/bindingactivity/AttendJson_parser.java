@@ -33,8 +33,8 @@ public class AttendJson_parser {
                 ClassNo = jo1.getString("CLASS_NO");
                 BeaconFlag = jo1.getString("BEACON_FLAG");
                 CurrentTime = jo1.getString("CTIME");
-                Date = jo1.getString("TIME");
                 AttendFlag = jo1.getString("ATTEND_FLAG");
+                Date = jo1.getString("DATE");
                 Week = jo1.getString("WEEK");
                 ClassCode = jo1.getString("CLASS_ID");
                 ClassName = jo1.getString("CLASS_NAME");

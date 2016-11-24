@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,7 +83,7 @@ public class LoginActivity extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(),result, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),result, Toast.LENGTH_LONG).show();
                         //  Toast.makeText(getApplicationContext(),hdmsg.obj.toString(),Toast.LENGTH_LONG).show();
                         //if(hdmsg.obj.toString().contains("TRUE")) {
                         if(result.equals("TRUE")){
@@ -170,7 +169,7 @@ public class LoginActivity extends Activity {
         alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "취소 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "취소 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
             }
         });
         alert.setMessage("정말 종료하시겠습니까? ");

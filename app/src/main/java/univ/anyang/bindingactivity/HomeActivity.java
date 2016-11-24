@@ -15,7 +15,6 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import static univ.anyang.bindingactivity.LoginActivity.msghandler;
 
@@ -116,24 +115,7 @@ public class HomeActivity extends Activity {
         startActivity(logoutIntent);
     }
 
-    public void alert(View v){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("알림!!");
-        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "확인 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-        alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "취소 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-        alert.setMessage("안녕하십니까? 알림 예제소스 학습중 입니다");
-        alert.show();
-    }
+
 
     protected void onStop() {
         super.onStop();
@@ -145,7 +127,7 @@ public class HomeActivity extends Activity {
     }
     public void onBackPressed() {
         //super.onBackPressed();
-        Toast.makeText(this, "Back button pressed.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Back button pressed.", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("알림");
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -158,7 +140,7 @@ public class HomeActivity extends Activity {
         alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "취소 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "취소 버튼이 눌렸습니다", Toast.LENGTH_SHORT).show();
             }
         });
         alert.setMessage("정말 종료하시겠습니까? ");

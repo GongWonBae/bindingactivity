@@ -6,7 +6,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -32,16 +31,16 @@ public class LocalService extends Service {
     public void onCreate() {
         super.onCreate();
        // client = new SocketClient("192.168.0.7","8888");  //현직
-       // client = new SocketClient("220.66.60.204","8888"); // 태옥
+        //client = new SocketClient("220.66.60.204","8888"); // 태옥
         client = new SocketClient("14.36.245.201","8888"); //원배
         client.start();
-        Toast.makeText(getBaseContext(),"서비스(onCreate)시작", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getBaseContext(),"서비스(onCreate)시작", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(getBaseContext(),"서비스(onStartCommand)시작", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getBaseContext(),"서비스(onStartCommand)시작", Toast.LENGTH_SHORT).show();
         return super.onStartCommand(intent, flags, startId);
 
     }

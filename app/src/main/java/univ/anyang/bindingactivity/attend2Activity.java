@@ -71,10 +71,11 @@ public class attend2Activity extends Activity {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
+                            //txtview_attend.setText("출석처리 되었습니다.");
 
                             if(aJp.AttendFlag.equals("00"))
                             {   // 출석처리됨
-                                txtview_attend.setText("출석이 확인되었습니다.");
+                                txtview_attend.setText("출석처리 되었습니다.");
                             }
                             else if(aJp.AttendFlag.equals("01"))
                             {   // 지각처리됨
@@ -86,11 +87,11 @@ public class attend2Activity extends Activity {
                             }
                             else if(aJp.AttendFlag.equals("11"))
                             {   // 결석처리됨
-                                txtview_attend.setText("결석처리 확인되었습니다.");
+                                txtview_attend.setText("결석처리되었습니다.");
                             }
                             else if(aJp.AttendFlag.equals(null))
                             {   // 아직 출석처리 되지 않았습니다 다시 시도하세요.
-                                txtview_attend.setText("아직 출석처리 되지 않았습니다 다시 시도하세요..");
+                                txtview_attend.setText("결석처리되었습니다.");
                             }
                         }
                         else if(aJp.BeaconFlag.equals("1"))     // 거리밖에 비콘 감지
@@ -99,7 +100,7 @@ public class attend2Activity extends Activity {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
-                            txtview_attend.setText("Beacon Flag : 1 \n강의실(비콘)이 너무 멀리 있습니다 다시 시도하세요");
+                            txtview_attend.setText("강의실이 멀리 있습니다.\n다시 시도하세요.\nBF:1.");
                         }
                         else if(aJp.BeaconFlag.equals("2"))     // 비콘을 찾을 수 없음
                         {
@@ -107,7 +108,7 @@ public class attend2Activity extends Activity {
                             btn_ok.setVisibility(View.INVISIBLE);
                             btn_cancel.setVisibility(View.INVISIBLE);
                             btn_close.setVisibility(View.VISIBLE);
-                            txtview_attend.setText("Beacon Flag : 2 \n 강의실(비콘)을 찾을 수 없습니다 다시 시도하세요.");
+                            txtview_attend.setText("강의실을 찾을 수 없습니다..");
                         }
                         break;
                 }
