@@ -108,6 +108,7 @@ public class attendActivity extends Activity implements BeaconConsumer{
                             Intent newintent = new Intent(getBaseContext(), attend2Activity.class);
                             newintent.putExtra("B_Json",jMaker.str);
                             startActivityForResult(newintent,1001);
+
                         } catch(JSONException e) {
                             e.printStackTrace();
                         }

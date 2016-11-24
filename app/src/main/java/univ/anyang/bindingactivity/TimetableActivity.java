@@ -16,7 +16,7 @@ public class TimetableActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable);
 
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(lA.SID);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView img=(ImageView)findViewById(R.id.timetime);
