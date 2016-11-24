@@ -30,7 +30,8 @@ public class SearchJson_Parser {
                 for(int j=0;j<ja2.length();j++)
                 {
                     JSONObject jo2 = ja2.getJSONObject(j);
-                    mJson = new MyJson(jo2.getString("CLASS_NAME"),jo2.getString("CLASS_NO"),jo2.getString("CLASS_ID"),jo2.getString("CLASS_ROOM"),jo2.getString("WEEK"),jo2.getString("CTIME"));
+                    mJson = new MyJson(jo2.getString("CLASS_NAME"),jo2.getString("CLASS_NO"),jo2.getString("CLASS_ID"),
+                                        jo2.getString("CLASS_ROOM"),jo2.getString("WEEK"),jo2.getString("CTIME"));
                     list.add(mJson);
                 }
             }

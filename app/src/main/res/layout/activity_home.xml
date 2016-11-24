@@ -24,9 +24,10 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/ayu_logo"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
 
         android:onClick="HomepageButton" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -34,67 +35,145 @@
         android:weightSum="1"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        android:paddingTop="10dp">
+        android:paddingTop="40dp">
 
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:src="@drawable/ic_action_name"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom" >
 
-            android:id="@+id/img_attend"
-            android:layout_weight="0.15"
-            android:background="#26409a"
-            android:scaleType="fitStart"
-            android:layout_marginTop="10dp"
-            android:onClick="onClick" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:src="@drawable/clock"
 
-            android:id="@+id/img_attendcheck"
-            android:layout_weight="0.15"
-            android:background="#26409a"
-            android:scaleType="fitStart"
-            android:layout_marginTop="30px"/>
+            <ImageView
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:src="@drawable/timetable"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:src="@drawable/ic_action_name"
+                android:id="@+id/img_attend"
+                android:background="#26409a"
+                android:scaleType="fitStart"
+                android:onClick="onClick" />
 
-            android:id="@+id/img_timetable"
-            android:layout_weight="0.15"
-            android:background="#26409a"
-            android:scaleType="fitStart"
-            android:layout_marginTop="30px"
-            android:onClick="onClick"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_attend"
+                android:layout_alignTop="@id/img_attend"
+                android:layout_alignLeft="@id/img_attend"
+                android:layout_alignRight="@id/img_attend"
+                android:paddingLeft="-130dp"
+                android:gravity="center"
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:src="@drawable/setting"
+                android:typeface="serif"
+                android:text="출석 체크"
+                android:textColor="#eeeeee"
+                android:textStyle="bold"
+                android:textSize="27dp"/>
 
-            android:id="@+id/img_setting"
-            android:layout_weight="0.15"
-            android:background="#26409a"
-            android:scaleType="fitStart"
-            android:layout_marginTop="30px"
-            android:onClick="onClick" />
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/img_attend"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:src="@drawable/clock"
+                android:id="@+id/img_attendcheck"
+                android:background="#26409a"
+                android:scaleType="fitStart" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_attendcheck"
+                android:layout_alignTop="@id/img_attendcheck"
+                android:layout_alignLeft="@id/img_attendcheck"
+                android:layout_alignRight="@id/img_attendcheck"
+                android:paddingLeft="-130dp"
+                android:gravity="center"
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:src="@drawable/notice"
+                android:typeface="serif"
+                android:text="출석 보기"
+                android:textColor="#eeeeee"
+                android:textStyle="bold"
+                android:textSize="27dp"/>
 
-            android:id="@+id/img_notice"
-            android:layout_weight="0.15"
-            android:background="#26409a"
-            android:scaleType="fitStart"
-            android:layout_marginTop="30px"
-            android:layout_marginBottom="-300px"/>
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/img_attendcheck"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:src="@drawable/notice"
+                android:id="@+id/img_notice"
+                android:background="#26409a"
+                android:scaleType="fitStart" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_notice"
+                android:layout_alignTop="@id/img_notice"
+                android:layout_alignLeft="@id/img_notice"
+                android:layout_alignRight="@id/img_notice"
+                android:paddingLeft="-140dp"
+                android:gravity="center"
+
+                android:typeface="serif"
+                android:text="공지사항"
+                android:textColor="#eeeeee"
+                android:textStyle="bold"
+                android:textSize="27dp"/>
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/img_notice"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:src="@drawable/timetable"
+                android:id="@+id/img_timetable"
+                android:background="#26409a"
+                android:scaleType="fitStart"
+                android:onClick="onClick"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_timetable"
+                android:layout_alignTop="@id/img_timetable"
+                android:layout_alignLeft="@id/img_timetable"
+                android:layout_alignRight="@id/img_timetable"
+                android:paddingLeft="-160dp"
+                android:gravity="center"
+
+                android:typeface="serif"
+                android:text="시간표"
+                android:textColor="#eeeeee"
+                android:textStyle="bold"
+                android:textSize="27dp"/>
+
+            <ImageView
+                android:layout_below="@id/img_timetable"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:src="@drawable/setting"
+                android:id="@+id/img_setting"
+                android:background="#26409a"
+                android:scaleType="fitStart"
+                android:onClick="onClick" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_setting"
+                android:layout_alignTop="@id/img_setting"
+                android:layout_alignLeft="@id/img_setting"
+                android:layout_alignRight="@id/img_setting"
+                android:paddingLeft="-185dp"
+                android:gravity="center"
+
+                android:typeface="serif"
+                android:text="설정"
+                android:textColor="#eeeeee"
+                android:textStyle="bold"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
 </LinearLayout>
